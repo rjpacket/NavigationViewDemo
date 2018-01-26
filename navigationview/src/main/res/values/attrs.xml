@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="NavigationView">
+        <attr name="tab_selectedColor" format="reference|color"/>
+        <attr name="tab_unSelectedColor" format="reference|color"/>
+        <attr name="tab_midSpace" format="dimension" />
+        <attr name="tab_paddingTop" format="dimension" />
+        <attr name="tab_paddingBottom" format="dimension" />
+        <attr name="tab_textSize" format="dimension" />
+        <attr name="tab_iconWidth" format="dimension" />
+    </declare-styleable>
+</resources>
