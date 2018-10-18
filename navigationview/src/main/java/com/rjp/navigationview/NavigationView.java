@@ -35,6 +35,7 @@ public class NavigationView extends LinearLayout implements View.OnClickListener
     private List<Fragment> fragments;
     private FragmentManager fragmentManager;
     private int containerId;
+    private OnTabClickListener onTabClickListener;
 
     public NavigationView(Context context) {
         this(context, null);
@@ -113,8 +114,14 @@ public class NavigationView extends LinearLayout implements View.OnClickListener
             preNavView.setSelected(false);
             v.setSelected(true);
             showFragment(currentIndex);
+            if(onTabClickListener != null){
+                onTabClickListener.onTabClick(selectIndex);
+            }
         } else {
             //再次点击当前tab
+            if(onTabClickListener != null){
+                onTabClickListener.onTabTwiceClick(selectIndex);
+            }
         }
         selectIndex = currentIndex;
     }
@@ -144,5 +151,9 @@ public class NavigationView extends LinearLayout implements View.OnClickListener
      */
     public void setContainerId(int containerId) {
         this.containerId = containerId;
+    }
+
+    public void setOnTabClickListener(OnTabClickListener onTabClickListener) {
+        this.onTabClickListener = onTabClickListener;
     }
 }
