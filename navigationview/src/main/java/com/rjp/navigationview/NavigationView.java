@@ -115,12 +115,12 @@ public class NavigationView extends LinearLayout implements View.OnClickListener
             v.setSelected(true);
             showFragment(currentIndex);
             if(onTabClickListener != null){
-                onTabClickListener.onTabClick(selectIndex);
+                onTabClickListener.onTabClick(currentIndex);
             }
         } else {
             //再次点击当前tab
             if(onTabClickListener != null){
-                onTabClickListener.onTabTwiceClick(selectIndex);
+                onTabClickListener.onTabTwiceClick(currentIndex);
             }
         }
         selectIndex = currentIndex;
