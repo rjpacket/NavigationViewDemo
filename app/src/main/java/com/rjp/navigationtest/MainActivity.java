@@ -33,5 +33,6 @@ public class MainActivity extends FragmentActivity {
         fragments.add(TestFragment.getInstance("我的"));
         navigationView.setFragments(fragments);
         navigationView.setTabs(tabModels);
+        navigationView.setCurrentTab(1);
     }
 }

@@ -108,22 +108,7 @@ public class NavigationView extends LinearLayout implements View.OnClickListener
     @Override
     public void onClick(View v) {
         int currentIndex = (Integer) v.getTag();
-        if (currentIndex != selectIndex) {
-            //切换tab
-            NavChildView preNavView = (NavChildView) getChildAt(selectIndex);
-            preNavView.setSelected(false);
-            v.setSelected(true);
-            showFragment(currentIndex);
-            if(onTabClickListener != null){
-                onTabClickListener.onTabClick(currentIndex);
-            }
-        } else {
-            //再次点击当前tab
-            if(onTabClickListener != null){
-                onTabClickListener.onTabTwiceClick(currentIndex);
-            }
-        }
-        selectIndex = currentIndex;
+        setCurrentTab(currentIndex);
     }
 
     /**
@@ -155,5 +140,23 @@ public class NavigationView extends LinearLayout implements View.OnClickListener
 
     public void setOnTabClickListener(OnTabClickListener onTabClickListener) {
         this.onTabClickListener = onTabClickListener;
+    }
+
+    public void setCurrentTab(int currentIndex) {
+        if (currentIndex != selectIndex) {
+            //切换tab
+            getChildAt(selectIndex).setSelected(false);
+            getChildAt(currentIndex).setSelected(true);
+            showFragment(currentIndex);
+            if(onTabClickListener != null){
+                onTabClickListener.onTabClick(currentIndex);
+            }
+        } else {
+            //再次点击当前tab
+            if(onTabClickListener != null){
+                onTabClickListener.onTabTwiceClick(currentIndex);
+            }
+        }
+        selectIndex = currentIndex;
     }
 }
